@@ -34,6 +34,9 @@ The LEMP stack is a collection of software used to serve dynamic websites and we
 ## What is Nginx: 
 The web server software that serves the web content. It acts as a reverse proxy server, handling HTTP requests. Nginx handles incoming requests from users' browsers.
 ## Using the apt package manager, Upadte all packages in package manager and install Nginx
-  sudo apt update
+    sudo apt update
 
-  sudo apt install nginx
+    sudo apt install nginx
+![5](https://github.com/user-attachments/assets/2d0ab27b-ed56-4fc6-9e31-fe0af868a3ea)
+
+    
