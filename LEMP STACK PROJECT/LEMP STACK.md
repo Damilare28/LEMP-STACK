@@ -43,15 +43,27 @@ The web server software that serves the web content. It acts as a reverse proxy 
 
       sudo systemctl status nginx
 
-      Note: If it is green and running, then apache2 is running perfectly
+      Note: If it is green and running, then nginx is running perfectly
       
 ![7](https://github.com/user-attachments/assets/09948c4d-5462-41d5-9cbd-b3b75f2679c5)
 
 ## The server can be accessed locally by using the commands below
 
       curl http://localhost:80   
-or               
+                or               
       curl http://127.0.0.1:80
+![9](https://github.com/user-attachments/assets/98af6f3d-50e4-4371-90e1-558ea66c42a8)
+
+## Test how our Nginx server can respond to requests from the Internet. 
+
+   Open a web browser of your choice and try to access following url
+   
+   http://<"Public ip address">:80-- "In place of the <Public-IP-Address> Use the public ip address on the instance page"
+   
+   Note: If the page is displayed, then the web server is now correctly installed and accessible through your firewall.
+![10](https://github.com/user-attachments/assets/1568cae4-8bcc-4918-9d01-3f9354ac1127)
+
+
 
 
     
