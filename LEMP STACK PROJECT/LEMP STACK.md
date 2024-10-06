@@ -150,11 +150,65 @@ Exit the MYSQL console
 
 ![25](https://github.com/user-attachments/assets/8b1cdbff-450f-4fe9-94e9-2255c8cf1ec7)
 
-# Installing php-fpm and php-mysql
+# Stage 3. Installing php-fpm and php-mysql
 
   While Apache embeds the PHP interpreter in each request, Nginx requires an external program to handle PHP processing and act as a bridge between the PHP interpreter itself and the web server. This allows for a better overall performance in most PHP-based websites, but it requires additional configuration. You'll need to install php-fpm, which stands for "PHP fastCGI process manager", and tell Nginx to pass PHP requests to this software for processing. Additionally, you'll need php-mysql, a PHP module that allows PHP to communicate with MySQL-based databases. Core PHP packages will automatically be installed as dependencies.
+  
   The two packages can be installed at once:
+  
         sudo apt install php-fpm php-mysql
+
+  ![26](https://github.com/user-attachments/assets/e13257c8-0df4-460f-b231-e527e97bb846)
+
+  # Stage 4. Configuring Nginx to use PHP Processor
+
+  To host multiple sites,  we'll create a directory structure within /var/www with the domain name projectLEMP.
+
+## 1. Create the root web directory for your_domain as follows:
+
+      sudo mkdir /var/www/projectLEMP
+
+## 2. Assign ownership of the directory to my current system user using the $USER environment variable
+   
+      sudo chown -R $USER:$USER /var/www/projectLEMP
+      
+## 3. Open a new configuration file in Nginx'S sites-available directory using nano
+
+    sudo nano /etc/nginx/sites-available/projectLEMP
+
+This will create a new blank file. Paste in the following bare-bones configuration:
+
+![image](https://github.com/user-attachments/assets/37291bfb-0945-45c2-b018-6422d02fd76e)
+
+## 4. Activate the configuration by linking to the config file from Nginx's sites-enabled directory:
+
+    sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
+
+## 5. Test the configuration for syntax error 
+
+      sudo nginx -t
+
+  ![27](https://github.com/user-attachments/assets/6d531c03-c6a0-4557-a325-018215e02ce2)
+
+## 6. Disable default Nginx host that is currently configured to listen on port 80
+
+    sudo unlink /etc/nginx/sites-enabled/default
+
+## 7. Reload Nginx to apply the changes
+
+    sudo systemctl reload nginx
+
+## 8. Create an index.html file in the web root 
+
+    To test the server block is working well, create an index.html in the web root /var/www/projectLEMP/
+
+sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/projectlamp/index.html'
+
+
+
+
+  
+
 
 
      
