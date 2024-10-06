@@ -280,6 +280,88 @@ We will create a database named damilare_database and a user named damilare_user
 
         mysql> GRANT ALL ON damilare_database .* TO 'damilare_user'@'%';
 
+        ![35](https://github.com/user-attachments/assets/79340c78-9ece-430b-b022-2f5a751c22ba)
+
+  ## 5. Exit mysql
+
+     mysql> exit
+
+     ![36](https://github.com/user-attachments/assets/c5da9f8d-c8ee-4d88-8a91-5fcaea8bdb5d)
+
+  ## 6. Test the new user
+
+       Test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
+
+         mysql -u damilare_user -p
+
+      ![37](https://github.com/user-attachments/assets/ffe837df-3040-4fec-bd27-98922532f916)
+
+  ## 7. Show Databases
+
+          SHOW DATABASES;
+
+  ### Output 
+
+        ![38](https://github.com/user-attachments/assets/696d694f-1348-4aee-9e7e-da50d2eea5de)
+
+  ## 8. Create a test table todo_list and run the following statement
+
+      ![39](https://github.com/user-attachments/assets/09350b4d-230c-4a12-946f-a5663ab1e8c8)
+
+  ## 9. Insert a few rows of content in the test table.
+
+        INSERT INTO damilare_database. todo_list (content) VALUES ("My first important item") ;
+
+  The command can be repeated using different VALUES
+
+    ![40](https://github.com/user-attachments/assets/6205be92-facd-4c97-b984-b3453d4764c5)
+
+## 10. Confirm the data was successfully saved in the table
+
+        SELECT * FROM example_database.todo_list;
+
+  ### Output:
+
+      ![41](https://github.com/user-attachments/assets/a77f2f1c-e978-4a08-9ce4-dcfa6d974a26)
+
+## 11. Exit the mysql
+
+        exit
+
+## 12. Create a PHP Script
+
+    Now you can create a PHP script that will connect to MySQL and query for your content. Create a new PHP file in your custom web root directory using nano.
+
+        nano /var/www/projectLEMP/todo_list.php
+
+  The following PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
+
+Copy this content into your todo_list.php script:
+
+![image](https://github.com/user-attachments/assets/d1aa0b32-94e4-4b77-b9c0-7f9774cccae7)
+
+![42](https://github.com/user-attachments/assets/117313c2-64ee-47b0-88b4-14a8930bc729)
+
+
+  Save and close the file when you are done editing.
+
+## 13. Access the web page in the browser
+
+You can now access this page in your web browser by visiting the domain name or public IP address configured for your website, followed by /todo_list.php:
+
+      http://<Public_domain_or_IP>/todo_list.php
+
+You should see a page like this
+
+![image](https://github.com/user-attachments/assets/398dbde8-34ea-41da-92b6-8fa5d8351054)
+
+
+
+
+
+
+        
+
 
 
 
