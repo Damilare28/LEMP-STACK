@@ -61,6 +61,7 @@ The web server software that serves the web content. It acts as a reverse proxy 
    http://<"Public ip address">:80-- "In place of the 'Public-IP-Address' Use the public ip address on the instance page"
    
    Note: If the page is displayed, then the web server is now correctly installed and accessible through your firewall.
+   
 ![10](https://github.com/user-attachments/assets/1568cae4-8bcc-4918-9d01-3f9354ac1127)
 
 
