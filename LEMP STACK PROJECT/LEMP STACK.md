@@ -43,7 +43,7 @@ The web server software that serves the web content. It acts as a reverse proxy 
 
       sudo systemctl status nginx
 
-      Note: If it is green and running, then nginx is running perfectly
+Note: If it is green and running, then nginx is running perfectly
       
 ![7](https://github.com/user-attachments/assets/09948c4d-5462-41d5-9cbd-b3b75f2679c5)
 
@@ -174,7 +174,7 @@ Exit the MYSQL console
       
   ## 3. Open a new configuration file in Nginx'S sites-available directory using nano
 
-    sudo nano /etc/nginx/sites-available/projectLEMP
+      sudo nano /etc/nginx/sites-available/projectLEMP
 
 This will create a new blank file. Paste in the following bare-bones configuration:
 
@@ -202,7 +202,7 @@ This will create a new blank file. Paste in the following bare-bones configurati
 
     To test the server block is working well, create an index.html in the web root /var/www/projectLEMP/
 
-sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/projectlamp/index.html'
+        sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token:           $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")           && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/projectlamp/index.html'
 
   ## 9. Open a website using the public ip address
   
