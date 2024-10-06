@@ -200,7 +200,7 @@ This will create a new blank file. Paste in the following bare-bones configurati
 
   ## 8. Create an index.html file in the web root 
 
-    To test the server block is working well, create an index.html in the web root /var/www/projectLEMP/
+  To test the server block is working well, create an index.html in the web root /var/www/projectLEMP/
 
         sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token:           $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\")           && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/projectlamp/index.html'
 
@@ -232,6 +232,7 @@ Paste the valid PHP Code
 ![30](https://github.com/user-attachments/assets/1ebe5250-d84a-4f3b-aec0-6f336dc7b3fd)
 
   ## 2. Access the page in the web browser
+  
   You can now access this page in the web browser by visiting the domain name or public IP address set up in your Nginx configuration file, followed by /info.php:
 
       http://'server_domain_or_IP'/info.php
@@ -267,7 +268,7 @@ We will create a database named damilare_database and a user named damilare_user
 
   ## 3. Create a new user and grant it full access on the database 
 
-     Use the following command
+ Use the following command
 
           mysql> CREATE USER 'damilare_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
 
@@ -277,17 +278,17 @@ We will create a database named damilare_database and a user named damilare_user
 
         mysql> GRANT ALL ON damilare_database .* TO 'damilare_user'@'%';
 
-    ![35](https://github.com/user-attachments/assets/79340c78-9ece-430b-b022-2f5a751c22ba)
+![35](https://github.com/user-attachments/assets/79340c78-9ece-430b-b022-2f5a751c22ba)
 
   ## 5. Exit mysql
 
          mysql> exit
 
-    ![36](https://github.com/user-attachments/assets/c5da9f8d-c8ee-4d88-8a91-5fcaea8bdb5d)
+ ![36](https://github.com/user-attachments/assets/c5da9f8d-c8ee-4d88-8a91-5fcaea8bdb5d)
 
   ## 6. Test the new user
 
-    Test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
+Test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
 
            mysql -u damilare_user -p
 
