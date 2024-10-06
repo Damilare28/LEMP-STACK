@@ -182,7 +182,7 @@ This will create a new blank file. Paste in the following bare-bones configurati
 
   ## 4. Activate the configuration by linking to the config file from Nginx's sites-enabled directory:
 
-    sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
+      sudo ln -s /etc/nginx/sites-available/projectLEMP /etc/nginx/sites-enabled/
 
   ## 5. Test the configuration for syntax error 
 
@@ -192,11 +192,11 @@ This will create a new blank file. Paste in the following bare-bones configurati
 
   ## 6. Disable default Nginx host that is currently configured to listen on port 80
 
-    sudo unlink /etc/nginx/sites-enabled/default
+      sudo unlink /etc/nginx/sites-enabled/default
 
   ## 7. Reload Nginx to apply the changes
 
-    sudo systemctl reload nginx
+      sudo systemctl reload nginx
 
   ## 8. Create an index.html file in the web root 
 
@@ -205,6 +205,7 @@ This will create a new blank file. Paste in the following bare-bones configurati
 sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-hostname) with public IP $(TOKEN=$(curl -X PUT \"http://169.254.169.254/latest/api/token\" -H \"X-aws-ec2-metadata-token-ttl-seconds: 21600\") && curl -H \"X-aws-ec2-metadata-token: $TOKEN\" -s http://169.254.169.254/latest/meta-data/public-ipv4)" > /var/www/projectlamp/index.html'
 
   ## 9. Open a website using the public ip address
+  
    ## Output
 
 ![29](https://github.com/user-attachments/assets/72af546c-c62e-4616-aeb1-1e09c7cc3181)
@@ -219,8 +220,7 @@ sudo bash -c 'echo "Hello LAMP from hostname $(TOKEN=$(curl -X PUT \"http://169.
 
   At this point, the LEMP stack is completely installed and fully operational.
 
-  You can test it to validate that Nginx can correctly handle .php files off to your PHP processor. This can be done by creating a test PHP file in your document root. Open a new file
-called info.php within the document root in the text editor:
+  You can test it to validate that Nginx can correctly handle .php files off to your PHP processor. This can be done by creating a test PHP file in your document root. Open a new file called info.php within the document root in the text editor:
 
     sudo nano /var/www/projectLEMP/info.php
 
@@ -247,54 +247,51 @@ Paste the valid PHP Code
 
 # Stage 6: Retrieving data from MySQL database with PHP
 
-      In this step you will create a test database (DB) with simple "To do list" and configure access to it,
-so the Nginx website would be able to query data from the DB and display it.
+In this step you will create a test database (DB) with simple "To do list" and configure access to it,so the Nginx website would be able to query data from the DB and display it.
 
-At the time of this writing, the native MySQL PHP library mysqlnd doesn't
-support caching_sha2_authentication, the default authentication method for MySQL 8. We'll need to
-create a new user with the mysql_native_password authentication method in order to be able to
-connect to the MySQL database from PHP.
+At the time of this writing, the native MySQL PHP library mysqlnd doesn't support caching_sha2_authentication, the default authentication method for MySQL 8. We'll need to create a new user with the mysql_native_password authentication method in order to be able to connect to the MySQL database from PHP.
 
 We will create a database named damilare_database and a user named damilare_user.
 
   ## 1. First, connect to the MySQL console using the root account:
 
-      sudo mysql
+        sudo mysql
 
   ## 2. Create a new database
 
         CREATE DATABASE `damilare_database`;
 
   ## Output
-      ![33](https://github.com/user-attachments/assets/9798677e-897e-44ae-83c8-cd52c0be84a2)
+  
+    ![33](https://github.com/user-attachments/assets/9798677e-897e-44ae-83c8-cd52c0be84a2)
 
   ## 3. Create a new user and grant it full access on the database 
 
-      Use the following command
+     Use the following command
 
           mysql> CREATE USER 'damilare_user'@'%' IDENTIFIED WITH mysql_native_password BY 'PassWord.1';
 
-      ![34](https://github.com/user-attachments/assets/ea3ac9f8-2c45-4f7e-a755-977bea066c6f)
+  ![34](https://github.com/user-attachments/assets/ea3ac9f8-2c45-4f7e-a755-977bea066c6f)
 
   ## 4. Grant this user permission over the damilare_database Database:
 
         mysql> GRANT ALL ON damilare_database .* TO 'damilare_user'@'%';
 
-        ![35](https://github.com/user-attachments/assets/79340c78-9ece-430b-b022-2f5a751c22ba)
+    ![35](https://github.com/user-attachments/assets/79340c78-9ece-430b-b022-2f5a751c22ba)
 
   ## 5. Exit mysql
 
-     mysql> exit
+         mysql> exit
 
-     ![36](https://github.com/user-attachments/assets/c5da9f8d-c8ee-4d88-8a91-5fcaea8bdb5d)
+    ![36](https://github.com/user-attachments/assets/c5da9f8d-c8ee-4d88-8a91-5fcaea8bdb5d)
 
   ## 6. Test the new user
 
-       Test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
+    Test if the new user has the proper permissions by logging in to the MySQL console again, this time using the custom user credentials:
 
-         mysql -u damilare_user -p
+           mysql -u damilare_user -p
 
-      ![37](https://github.com/user-attachments/assets/ffe837df-3040-4fec-bd27-98922532f916)
+ ![37](https://github.com/user-attachments/assets/ffe837df-3040-4fec-bd27-98922532f916)
 
   ## 7. Show Databases
 
@@ -302,19 +299,19 @@ We will create a database named damilare_database and a user named damilare_user
 
   ### Output 
 
-        ![38](https://github.com/user-attachments/assets/696d694f-1348-4aee-9e7e-da50d2eea5de)
+   ![38](https://github.com/user-attachments/assets/696d694f-1348-4aee-9e7e-da50d2eea5de)
 
   ## 8. Create a test table todo_list and run the following statement
 
-      ![39](https://github.com/user-attachments/assets/09350b4d-230c-4a12-946f-a5663ab1e8c8)
+  ![39](https://github.com/user-attachments/assets/09350b4d-230c-4a12-946f-a5663ab1e8c8)
 
   ## 9. Insert a few rows of content in the test table.
 
-        INSERT INTO damilare_database. todo_list (content) VALUES ("My first important item") ;
+          INSERT INTO damilare_database. todo_list (content) VALUES ("My first important item") ;
 
   The command can be repeated using different VALUES
 
-    ![40](https://github.com/user-attachments/assets/6205be92-facd-4c97-b984-b3453d4764c5)
+  ![40](https://github.com/user-attachments/assets/6205be92-facd-4c97-b984-b3453d4764c5)
 
 ## 10. Confirm the data was successfully saved in the table
 
@@ -330,11 +327,11 @@ We will create a database named damilare_database and a user named damilare_user
 
 ## 12. Create a PHP Script
 
-    Now you can create a PHP script that will connect to MySQL and query for your content. Create a new PHP file in your custom web root directory using nano.
+Now you can create a PHP script that will connect to MySQL and query for your content. Create a new PHP file in your custom web root directory using nano.
 
         nano /var/www/projectLEMP/todo_list.php
 
-  The following PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
+The following PHP script connects to the MySQL database and queries for the content of the todo_list table, displays the results in a list. If there is a problem with the database connection, it will throw an exception.
 
 Copy this content into your todo_list.php script:
 
@@ -349,11 +346,16 @@ Copy this content into your todo_list.php script:
 
 You can now access this page in your web browser by visiting the domain name or public IP address configured for your website, followed by /todo_list.php:
 
-      http://<Public_domain_or_IP>/todo_list.php
+          http://<Public_domain_or_IP>/todo_list.php
 
 You should see a page like this
 
 ![image](https://github.com/user-attachments/assets/398dbde8-34ea-41da-92b6-8fa5d8351054)
+
+## Conclusion
+
+At the end of this project, it was possible to set up a web server environment for hosting dynamic websites and web applications by using LEMP Stack exploring Nginx as web server, MySQL as database management system and PHP to process code and generate dynamic content for the web server.
+
 
 
 
