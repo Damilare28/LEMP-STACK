@@ -1,4 +1,4 @@
-# WEB-STACK-IMPLEMENTATION-LAMP-STACK-IN-AWS
+# WEB-STACK-IMPLEMENTATION-LEMP-STACK-IN-AWS
 
 # Purpose of this Project: 
 This project helps to further develop deep understanding on the following
